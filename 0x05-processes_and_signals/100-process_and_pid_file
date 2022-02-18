@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# create a file containing it's pid while reacting to different signal
+
+sudo bash -c "echo $$ > /var/run/myscript.pid"
+
+trap signal1 SIGTERM
+trap signal2 SIGINT
+trap signal3 SIGQUIT
+
+signal1()
+{
+    echo "I hate the kill command"
+    sudo rm /var/run/myscript.pid
+    exit $?
+}
+
+signal2()
+{
+    echo "Y U no love me?!"
+}
+
+signal3()
+{
+    sudo rm /var/run/myscript.pid
+    exit $?
+}
+
+until false; do
+    echo "To infinity and beyond"
+    sleep 2
+done
