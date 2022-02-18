@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# print 'I am invicible!!!' while the process '7-highlander' (without kill)
+
+pkill -f ./7-highlander
