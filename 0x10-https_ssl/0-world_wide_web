@@ -5,6 +5,7 @@ func () {
     echo -n "The subdomain $2 "
     dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{printf "is a %s record and points to %s\n", $4, $5}'
 }
+
 if [ -z "$2" ]
 then
     for sub in "www" "lb-01" "web-01" "web-02"
