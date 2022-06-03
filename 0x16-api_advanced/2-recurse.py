@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-Module that contains the function recurse.
+Module that contains the function recurse
 """
+
 
 import requests
 
@@ -16,8 +17,9 @@ def recurse(subreddit, hot_list=[], after=""):
                        params={'after': after}, allow_redirects=False)
     if req.status_code > 300:
         return None
-    for i in req.json().get('data').get('children'):
-        hot_list.append(i.get('title'))
-    if req.json().get('data').get('after') is not None:
-        return recurse(subreddit, hot_list, after)
-    return hot_list
+    else:
+        for i in req.json().get('data').get('children'):
+            hot_list.append(i.get('title'))
+    if not req.json().get('data').get('after'):
+        return hot_list
+    return recurse(subreddit, hot_list, after)
