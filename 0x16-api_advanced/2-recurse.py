@@ -13,7 +13,7 @@ def recurse(subreddit, hot_list=[], after=""):
     """
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     req = requests.get(url, headers={'User-agent': 'Adventurous-Bed5688'},
-                           params={'after': after}, allow_redirects=False)
+                       params={'after': after}, allow_redirects=False)
     if req.status_code > 300:
         return None
     for i in req.json().get('data').get('children'):
