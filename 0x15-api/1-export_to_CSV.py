@@ -15,7 +15,7 @@ if __name__ == "__main__":
     filename = "{}.csv".format(argv[1])
 
     with open(filename, "w", encoding='UTF8') as f:
-        writer = csv.writer(f, quotechar="'")
+        writer = csv.writer(f, delimiter=',', quoting=csv.QUOTE_ALL)
 
         for value in to_do.json():
             data = [user_id, user, value.get('completed'),
