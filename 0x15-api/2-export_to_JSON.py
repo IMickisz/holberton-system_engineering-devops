@@ -7,10 +7,9 @@ if __name__ == "__main__":
     import requests
     import json
 
-
     url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
     api_url = requests.get(url)
-    user = api_url.json().get("name")
+    user = api_url.json().get("username")
     user_id = api_url.json().get("id")
     to_do = requests.get("{}/todos".format(url))
     filename = "{}.json".format(argv[1])

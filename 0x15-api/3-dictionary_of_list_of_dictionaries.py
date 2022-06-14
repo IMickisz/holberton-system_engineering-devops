@@ -6,14 +6,13 @@ if __name__ == "__main__":
     import requests
     import json
 
-
     url = "https://jsonplaceholder.typicode.com/users/"
     api_url = requests.get(url)
     filename = "todo_all_employees.json"
     dico = {}
 
     for values in api_url.json():
-        user = values.get("name")
+        user = values.get("username")
         user_id = values.get("id")
         to_do = requests.get("{}{}/todos".format(url, user_id))
         todo_list = []
